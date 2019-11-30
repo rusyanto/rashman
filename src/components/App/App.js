@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import Blueman from '../Blueman';
+import PhysioReport from '../PhysioReport';
 
 const theme = createMuiTheme({
   palette: {
@@ -27,7 +27,7 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Blueman />
+      <PhysioReport />
     </ThemeProvider>
   );
 }
