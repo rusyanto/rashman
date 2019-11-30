@@ -27,10 +27,10 @@ function BoxToDate(props) {
     >
       <Grid container spacing={1}>
         <Grid item xs={6}>
-          <Paper className={classes.paper}>{value.mtd}</Paper>
+          <Paper className={classes.paper} elevation={3}>{value.mtd}</Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper className={classes.paper}>{value.ytd}</Paper>
+          <Paper className={classes.paper} elevation={3}>{value.ytd}</Paper>
         </Grid>
       </Grid>
     </Box>

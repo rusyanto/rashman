@@ -15,7 +15,7 @@ function Blueman() {
       <BoxToDate pos={{right: 30, top: 105}} value={{mtd: 2, ytd: 8}} />
       <BoxToDate pos={{right: 30, top: 240}} value={{mtd: 6, ytd: 19}} />
       <BoxToDate pos={{right: 30, top: 370}} value={{mtd: 0, ytd: 0}} />
-      <BoxToDate pos={{right: 30, top: 590}} value={{mtd: 0, ytd: 4}} />
+      <BoxToDate pos={{right: 30, top: 595}} value={{mtd: 0, ytd: 4}} />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import './PhysioReport.css';
 import Blueman from '../Blueman';
-import { makeStyles } from '@material-ui/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
@@ -12,14 +11,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-const useStyles = makeStyles(theme => ({
-  tableHead: {
-    fontWeight: 600
-  }
-}));
-
 function PhysioReport() {
-  const classes = useStyles();
   const [dept, setDept] = React.useState('all');
 
   return (
