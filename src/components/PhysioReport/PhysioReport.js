@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PhysioReport.css';
+import allData from '../../assets/data';
 import Blueman from '../Blueman';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
@@ -12,14 +13,20 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 function PhysioReport() {
-  const [dept, setDept] = React.useState('all');
+  const [dept, setDept] = useState('all');
+  const [data, setData] = useState(allData.all);
+
+  const handleDeptChange = event => {
+    setDept(event.target.value);
+    setData(allData[event.target.value]);
+  };
 
   return (
     <React.Fragment>
       <Grid container justify="center">
         <Grid item xs={3}>
           <FormControl fullWidth style={{textAlign: 'center'}}>
-            <Select value={dept} displayEmpty>
+            <Select value={dept} onChange={handleDeptChange} displayEmpty>
               <MenuItem value={'all'}>Site Overall</MenuItem>
               <MenuItem value={'dept1'}>Dept 1</MenuItem>
             </Select>
@@ -37,11 +44,11 @@ function PhysioReport() {
             <TableBody>
               <TableRow>
                 <TableCell align="center">Monthly</TableCell>
-                <TableCell align="center">446</TableCell>
+                <TableCell align="center">{ data.totalInteractions.mtd }</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell align="center">YTD</TableCell>
-                <TableCell align="center">3495</TableCell>
+                <TableCell align="center">{ data.totalInteractions.ytd }</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -57,17 +64,17 @@ function PhysioReport() {
             <TableBody>
               <TableRow>
                 <TableCell align="center">Monthly</TableCell>
-                <TableCell align="center">89</TableCell>
+                <TableCell align="center">{ data.totalTreatments.mtd }</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell align="center">YTD</TableCell>
-                <TableCell align="center">667</TableCell>
+                <TableCell align="center">{ data.totalTreatments.ytd }</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </Grid>
       </Grid>
-      <Blueman />
+      <Blueman data={data.treatments} />
       <Grid container>
         <Grid item xs={5}>
           <Table size="small" aria-label="interactions table">
@@ -84,18 +91,18 @@ function PhysioReport() {
               </TableRow>
               <TableRow>
                 <TableCell align="center">WR</TableCell>
-                <TableCell align="center">16</TableCell>
-                <TableCell align="center">69</TableCell>
+                <TableCell align="center">{ data.newInjury.wr.mtd }</TableCell>
+                <TableCell align="center">{ data.newInjury.wr.ytd }</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell align="center">AW</TableCell>
-                <TableCell align="center">17</TableCell>
-                <TableCell align="center">121</TableCell>
+                <TableCell align="center">{ data.newInjury.aw.mtd }</TableCell>
+                <TableCell align="center">{ data.newInjury.aw.ytd }</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell align="center">NAW</TableCell>
-                <TableCell align="center">11</TableCell>
-                <TableCell align="center">81</TableCell>
+                <TableCell align="center">{ data.newInjury.naw.mtd }</TableCell>
+                <TableCell align="center">{ data.newInjury.naw.ytd }</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -111,19 +118,19 @@ function PhysioReport() {
             <TableBody>
               <TableRow>
                 <TableCell align="center">Vehicle jolt / jar</TableCell>
-                <TableCell align="center">18</TableCell>
+                <TableCell align="center">{ data.mechanismInjury.vehicle }</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell align="center">Slip, trip, fall</TableCell>
-                <TableCell align="center">11</TableCell>
+                <TableCell align="center">{ data.mechanismInjury.slip }</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell align="center">Repetitive movement</TableCell>
-                <TableCell align="center">9</TableCell>
+                <TableCell align="center">{ data.mechanismInjury.repetitive }</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell align="center">Sustained postures</TableCell>
-                <TableCell align="center">8</TableCell>
+                <TableCell align="center">{ data.mechanismInjury.postures }</TableCell>
               </TableRow>
             </TableBody>
           </Table>
